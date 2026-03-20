@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { Plus, Search, BookOpen, RefreshCw } from 'lucide-react';
+import { Plus, Search, NotebookPen, RefreshCw } from 'lucide-react';
 import {
   getNotes,
   getLabels,
@@ -30,7 +30,6 @@ export default function HomePage() {
       const data = await getLabels();
       setLabels(data);
     } catch {
-      /* silent */
     }
   }, []);
 
@@ -86,16 +85,18 @@ export default function HomePage() {
   const activeFilters = labels.filter((l) => activeFilterIds.includes(l.id));
 
   return (
-    <div className="min-h-screen bg-gray-50">
+   <div className="min-h-screen bg-[#0f0f0f]">
       {/* Header */}
-      <header className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm">
+      <header className="sticky top-0 z-40 bg-[#1a1a1a] border-b border-gray-800 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-gray-900 rounded-lg flex items-center justify-center">
-              <BookOpen size={16} className="text-white" />
-            </div>
-            <span className="text-xl font-bold text-gray-900">Notes</span>
-          </div>
+         <div className="flex items-center gap-3">
+  <div className="w-9 h-9 bg-gray-800 border border-gray-700 rounded-xl flex items-center justify-center shadow-lg">
+    <NotebookPen size={18} className="text-gray-200" />
+  </div>
+  <span className="text-xl font-bold text-white tracking-tight">
+    My<span className="text-gray-400">Notes</span>
+  </span>
+</div>
 
           <div className="relative flex-1 max-w-md">
             <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
@@ -104,7 +105,7 @@ export default function HomePage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search notes…"
-              className="w-full border border-gray-200 rounded-lg pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-400"
+              className="w-full bg-[#2a2a2a] border border-gray-700 text-gray-200 placeholder-gray-500 rounded-lg pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-500"
             />
           </div>
 
